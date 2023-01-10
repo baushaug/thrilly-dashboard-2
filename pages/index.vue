@@ -7,68 +7,31 @@
       </v-card>
       <v-card>
         <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
+          Bot Status: {{botCount}} currently running.
         </v-card-title>
         <v-card-text>
-          <p>Vuetify is a progressive Material Design component framework for Vue.js. It was designed to empower developers to create amazing applications.</p>
+          <p>See how many bots are currently running and add/remove processes.</p>
           <p>
-            For more information on Vuetify, check out the <a
-              href="https://vuetifyjs.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              documentation
-            </a>.
+            Remember you are charged for proxy usage. Also too many bots running at once all of a sudden looks suspicious. Be smart.
           </p>
-          <p>
-            If you have questions, please join the official <a
-              href="https://chat.vuetifyjs.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="chat"
-            >
-              discord
-            </a>.
+
           </p>
-          <p>
-            Find a bug? Report it on the github <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="contribute"
-            >
-              issue board
-            </a>.
-          </p>
-          <p>Thank you for developing with Vuetify and I look forward to bringing more exciting features in the future.</p>
-          <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
-          </div>
-          <hr class="my-3">
-          <a
-            href="https://nuxtjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt Documentation
-          </a>
-          <br>
-          <a
-            href="https://github.com/nuxt/nuxt.js"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt GitHub
-          </a>
+
         </v-card-text>
         <v-card-actions>
           <v-spacer />
           <v-btn
             color="primary"
-            nuxt
-            to="/inspire"
+            @click="addBot"
           >
-            Continue
+            Add Bot
+          </v-btn>
+
+          <v-btn
+            color="danger"
+            @click="removeBot"
+          >
+            Remove Bot
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -78,6 +41,21 @@
 
 <script>
 export default {
-  name: 'IndexPage'
+  name: 'IndexPage',
+  data() {
+    return {
+      botCount: 0
+    }
+  },
+  methods: {
+    addBot () {
+      alert('New process running on random proxy IP')
+      ++this.botCount;
+    },
+    removeBot () {
+      alert('Killing a bot process!')
+      this.botCount > 0 ? --this.botCount : this.botCount = 0
+    }
+  }
 }
 </script>
