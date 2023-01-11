@@ -14,7 +14,7 @@
           <p>
             Remember you are charged for proxy usage. Also too many bots running at once all of a sudden looks suspicious. Be smart.
           </p>
-
+          <iframe :src="phub" title="Thrillmonger" v-if="showIFrame" frameborder=0 width=510 height=400 scrolling=no allowfullscreen=allowfullscreen></iframe>
           </p>
 
         </v-card-text>
@@ -33,6 +33,13 @@
           >
             Remove Bot
           </v-btn>
+
+          <v-btn
+            color="secondary"
+            @click="runLocally"
+          >
+            Run Locally
+          </v-btn>
         </v-card-actions>
       </v-card>
     </v-col>
@@ -44,7 +51,9 @@ export default {
   name: 'IndexPage',
   data() {
     return {
-      botCount: 0
+      botCount: 0,
+      showIFrame: false,
+      phub: 'https://www.xvideos.com/embedframe/57364553'
     }
   },
   methods: {
@@ -55,6 +64,9 @@ export default {
     removeBot () {
       alert('Killing a bot process!')
       this.botCount > 0 ? --this.botCount : this.botCount = 0
+    },
+    runLocally () {
+      this.showIFrame = true
     }
   }
 }
