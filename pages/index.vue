@@ -56,6 +56,9 @@ export default {
       phub: 'https://www.xvideos.com/embedframe/57364553'
     }
   },
+  created () {
+    this.botCount = Math.floor(Math.random() * 10) + 1
+  },
   methods: {
     addBot () {
       alert('New process running on random proxy IP')
